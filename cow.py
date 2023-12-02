@@ -58,5 +58,5 @@ class Cow(pygame.sprite.Sprite):
 
         self.update_cow_y = self.cow_y
 
-    def cow_draw(self):
+    def cow_draw(self,scr):
         scr.blit(self.cow, (self.cow_x, self.cow_y))

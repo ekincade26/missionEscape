@@ -6,7 +6,8 @@ import random
 
 scr_wid = 1000  # (px)
 scr_hgt = 600  # (px)
-
+fired = 0
+score = 0
 def make_background(surface):
 
     # load the images
@@ -29,7 +30,8 @@ def make_splash_screen(background,scr):
 
 def create_aliens(num):
     for _ in range(num):
-        aliens.add(Alien(random.randint(scr_wid, scr_wid+1000),random.randint(0,scr_hgt-self.alien.get_height())))
+        aliens.add(Alien(random.randint(scr_wid, scr_wid+1000),random.randint(0,scr_hgt-19)))
+        #19 is hardcoded alien height
 def make_bullet(num):
     for _ in range(num):
         bullets.add(Bullet())

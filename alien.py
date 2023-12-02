@@ -1,12 +1,14 @@
 import pygame
-import random
+
 from parameters import *
 
 class Alien(pygame.sprite.Sprite):
     def __init__(self,x,y):
         super().__init__()
-        alien_img = f'kenney_space-shooter-extension/PNG/Sprites/Station/spaceStation_{num}.png'
+        alien_img = f'kenney_space-shooter-extension/PNG/Sprites/Station/spaceStation_001.png'
         self.alien = pygame.image.load(alien_img).convert()
+        #alien_height = self.alien.get_height()
+        #print(alien_height)
         self.alien.set_colorkey((0,0,0))
         self.alien_rect = self.alien.get_rect()
         #set to end of screen so they "fly in"
@@ -25,8 +27,12 @@ class Alien(pygame.sprite.Sprite):
 
     def alien_move(self):
         self.alien_x -= self.alien_speed
+        self.alien_rect.x = self.alien_x
     def alien_draw(self,scr):
         scr.blit(self.alien, (self.alien_x, self.alien_y))
+
+
+aliens = pygame.sprite.Group()
 
    # def check_for_collisions(self, alien_list):
     #    alien_rect_list = []
@@ -54,5 +60,5 @@ class Alien(pygame.sprite.Sprite):
        # print(indices0)
 
 
-aliens = pygame.sprite.Group()
+
 

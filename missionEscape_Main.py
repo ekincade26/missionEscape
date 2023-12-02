@@ -1,6 +1,4 @@
 import pygame
-import time
-import random
 from parameters import *
 from alien import aliens
 from bullet import bullets
@@ -15,16 +13,16 @@ pygame.init()
 
 
 
-class Objects():
-    def __init__(self, scr):
-        self.object_x = scr_wid
-        self.object_y = scr_hgt
+#class Objects():
+ #   def __init__(self, scr):
+      #  self.object_x = scr_wid
+       # self.object_y = scr_hgt
 
-class Score():
-    def __init__(self, scr):
-        self.points = 0
+#class Score():
+ #   def __init__(self, scr):
+  #      self.points = 0
        # self.lives = 3
-        self.ammo = 10
+   #     self.ammo = 10
 
 
 
@@ -44,11 +42,31 @@ while running:
     for event in events:
         if event.type == pygame.QUIT:
             running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bullet = Bullet()
+                bullet.rect.x = mr_cow.cow_rect.x
+                bullet.rect.y = mr_cow.cow_rect.y
+                bullets.add(bullet)
+    for bullet in bullets:
+        hit = pygame.sprite.spritecollide(bullet,aliens,True)
+        for alien in hit:
+            bullets.remove(bullet)
+            fired += 1
+            score += 1
+            print(fired)
+            print(score)
+
+
+
+
+
+    ######why blit after updating x, does this matter?
+
     make_background(background)
     scr.blit(background, (0, 0))
     mr_cow.move(scr, events)
-    make_bullet(5)
-    bullets.show_bullet(scr, events)
+
     create_aliens(8)
     aliens.alien_move()
     hit = pygame.sprite.spritecollide(bullets,aliens)
@@ -59,9 +77,10 @@ while running:
     if captured:
         #update lives
         lives = -1
+    bullets.update()
     aliens.alien_draw(scr)
-    mr_cow.cow_draw()
-    bullets.show_bullet(scr,events)
+    mr_cow.cow_draw(scr)
+    bullets.bullet_draw(scr)
 
 
 
