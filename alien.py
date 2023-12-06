@@ -1,7 +1,5 @@
-import pygame
-
 from parameters import *
-import random
+
 
 class Alien(pygame.sprite.Sprite):
     def __init__(self,x,y):
@@ -28,10 +26,9 @@ class Alien(pygame.sprite.Sprite):
     def draw(self,scr):
         scr.blit(self.image, self.rect)
 
-
+#create sprite group
 aliens = pygame.sprite.Group()
-aliensLII = pygame.sprite.Group()
-aliensLIII = pygame.sprite.Group()
+
 
 
 

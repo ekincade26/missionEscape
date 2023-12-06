@@ -1,9 +1,5 @@
-import pygame
-
 from parameters import *
-import math
-import time
-import random
+
 
 
 class AlienLIV(pygame.sprite.Sprite):
@@ -39,6 +35,8 @@ class AlienLIV(pygame.sprite.Sprite):
     def draw(self, scr):
         scr.blit(self.image, self.rect)
 
+
+#make sprite group
 aliensLIV = pygame.sprite.Group()
 
 

@@ -1,7 +1,4 @@
-import pygame
 from parameters import *
-
-
 class Heart(pygame.sprite.Sprite):
     def __init__(self,x,y):
         super().__init__()
@@ -28,5 +25,5 @@ class Heart(pygame.sprite.Sprite):
         scr.blit(self.image, self.rect)
 
 
-
+#create sprite group
 hearts = pygame.sprite.Group()
